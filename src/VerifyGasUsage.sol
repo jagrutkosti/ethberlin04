@@ -15,6 +15,7 @@ contract VerifyGasUsage is Ownable {
         _root = root_;
     }
 
+    // Not checking for signature because we want to keep it open i.e. anyone can mint sbt on behalf of someone else. SBT will be assigned to the address provided in merkle proof.
     function verify(
         bytes32[] memory proof,
         address addr,
