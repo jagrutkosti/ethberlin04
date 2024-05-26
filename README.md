@@ -38,7 +38,7 @@ To demonstrate this, we started with `geth` and the changes that are required to
 
 We tried to modify `geth`, but with the new changes, the `build` is throwing several errors. 
 
-### Specification:ß
+### Specification:
 
 We wrote down the things that needs to be changed in [SPECIFICATION.md](./SPECIFICATION.md).
 
@@ -56,7 +56,7 @@ An example of fetching the relevant addresses that interacted with [Sygma's Brid
 
 `FetchMainnetData.js` performs the API calls using Etherscan and post-processes the data and `Merkle.js` merklizes the fetched data. We are not persisting the data for now. The generated tree however is stored under `data/`.
 
-#### Running 
+### Running the code
 1. To generate the tree locally, please create `.env` file under the project's root dir with the format and values as mentioned in `.env.example`.
 2. Then run `npm run testRun`.
 
