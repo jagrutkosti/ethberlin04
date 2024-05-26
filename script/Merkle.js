@@ -1,20 +1,26 @@
-import { MerkleTree } from 'merkletreejs'
-import keccak256 from 'keccak256'
+import { StandardMerkleTree } from "@openzeppelin/merkle-tree";
+import fs from "fs";
 
 export const generateMerkleTree = (leaves) => {
-    return new MerkleTree(leaves, keccak256, { hashLeaves: true })
+    const tree = StandardMerkleTree.of(leaves, ["address", "uint256"])
+    fs.writeFileSync("data/tree.json", JSON.stringify(tree.dump()))
+    return tree
 }
 
-export const generateMerkleRoot = (tree) => {
-    return tree.getRoot().toString('hex')
+export const generateMerkleRoot = () => {
+    const tree = StandardMerkleTree.load(JSON.parse(fs.readFileSync("data/tree.json", "utf8")))
+    return tree.root
 }
 
-export const getProof = (tree, leaf) => {
-    leaf = keccak256(leaf)
-    return tree.getProof(leaf)
+export const getProof = (address) => {
+    const tree = StandardMerkleTree.load(JSON.parse(fs.readFileSync("data/tree.json", "utf8")))
+    for (const [i, v] of tree.entries()) {
+        if (v[0] === address) {
+          return tree.getProof(i)
+        }
+      }
 }
 
-export const verifyProof = (leaf, root, proof, tree) => {
-    leaf = keccak256(leaf)
-    return tree.verify(proof, leaf, root)
+export const verifyProof = (root, address, gasUsage, proof) => {
+    return StandardMerkleTree.verify(root, ['address', 'uint256'], [address, gasUsage], proof)
 }

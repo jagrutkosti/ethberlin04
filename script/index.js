@@ -8,15 +8,15 @@ const transactions = await fetchNormalTransactions({contractAddr: SYGMA_MAINNET_
 const gasUsageMap = await calculateGasUsage(transactions)
 
 // Concat address + gasUsage and use those as leaves. This would be required for granting appropriate voting power to SBT.
-const leaves = Array.from(gasUsageMap, ([name, value]) => (name+value))
+const leaves = Array.from(gasUsageMap, ([name, value]) => [name,value])
 
 const tree = generateMerkleTree(leaves)
 // Post this on smart contract
-const root = generateMerkleRoot(tree)
+const root = generateMerkleRoot()
 
 console.log(root)
 
-const proof = getProof(tree, leaves[0])
-const verify = verifyProof(leaves[0], root, proof, tree)
+const proof = getProof(leaves[0][0])
+const verify = verifyProof(root, leaves[0][0], leaves[0][1], proof)
 
 console.log(verify)
