@@ -10,7 +10,7 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "updateContractInteraction": "node script/ContractInteraction.js"
+    "testRun": "node script/index.js"
   },
   "keywords": [],
   "author": "",
