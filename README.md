@@ -1,4 +1,4 @@
-# EthBerlin 04 - Proof-of-Usage for distributing voting power to the users of the protocol
+# EthBerlin 04 - Proof-of-Usage for distributing voting power to protocol users
 
 Human co-ordination is a hard problem to solve! Web3 has been experimenting with it in different contexts and we believe incremental changes are what is going to make it better over time. With each iteration of implementation, we identify new problems and try to tackle them.
 
