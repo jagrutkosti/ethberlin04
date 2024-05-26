@@ -1,0 +1,25 @@
+{
+  "name": "ethberlin04",
+  "version": "1.0.0",
+  "description": "**Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.**",
+  "main": "script/index.js",
+  "type": "module",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "updateContractInteraction": "node script/ContractInteraction.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "keccak256": "^1.0.6",
+    "merkletreejs": "^0.3.11",
+    "node-fetch": "^3.3.2"
+  }
+}
